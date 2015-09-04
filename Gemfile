@@ -15,6 +15,9 @@ gem 'activerecord'
 
 gem 'rake'
 
+gem 'carrierwave'
+gem 'mini_magick'
+
 gem 'shotgun'
 
 group :test do
