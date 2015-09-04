@@ -1,0 +1,20 @@
+<div class="container">
+
+  <p>Welcome, <%= @user.name %>!</p>
+  <form id="log_out" action='/log_out' method="post">
+    <input type="submit" value="Log Out">
+  </form>
+
+  <h1>PseudoFlickr on Sinatra</h1>
+
+  <h3><a href="/users/<%= @user.id %>/albums/<%= @album.id %>"><%= @album.title %></a></h3>
+  <dt><%= @album.description %></dt>
+
+
+  <div id="display_photos">
+    <dd><%= @photo.image_name %></dd>
+    <dt><%= @photo.description %></dt>
+    <img src="<%= @photo.image %>">
+  </div>
+
+</div>

@@ -19,6 +19,7 @@ gem 'carrierwave'
 gem 'mini_magick'
 
 gem 'shotgun'
+gem 'byebug'
 
 group :test do
   gem 'faker'

@@ -23,11 +23,14 @@ require 'carrierwave/orm/activerecord'
 require 'mini_magick'
 
 require 'erb'
+require 'byebug'
 
 # Some helper constants for path-centric logic
 APP_ROOT = Pathname.new(File.expand_path('../../', __FILE__))
 
 APP_NAME = APP_ROOT.basename.to_s
+
+ActiveRecord::Base.raise_in_transactional_callbacks = true
 
 # Set up the controllers and helpers
 Dir[APP_ROOT.join('app', 'controllers', '*.rb')].each { |file| require file }
@@ -40,3 +43,4 @@ end
 
 # Set up the database and models
 require APP_ROOT.join('config', 'database')
+

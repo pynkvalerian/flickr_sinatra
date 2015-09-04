@@ -1,23 +1,34 @@
 <div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+  <h1>PseudoFlickr on Sinatra</h1>
+  <p>Welcome, budding photographer!</p>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
+  <button id="log_in" class="btn btn-default">Log In</button>
+  <button id="register" class="btn btn-default">Register</button>
+
+  <form class="form-horizontal" id="log_in" action='/log_in' method="post">
+    <input type="text" name="email" placeholder="Your Email">
+    <input type="text" name="password" placeholder="Your Password">
+    <input type="submit" value="Log In">
+  </form>
+
+  <form id="register" action='/register' method="post">
+    <input type="text" name="name" placeholder="Your Name">
+    <input type="text" name="email" placeholder="Your Email">
+    <input type="text" name="password" placeholder="Your Password">
+    <input type="submit" value="Register an account">
+  </form>
+
+  <div id="display_all_photos">
+    <% @photos.each do |photo| %>
+      <div id="display_photo">
+        <dt><%= photo.image_name %></dt>
+        <dd><%= photo.description %></dd>
+        <dd>by <%= photo.album.user.name %></dd>
+        <img src="<%= photo.image_url(:thumb) %>">
+      </div>
+    <% end %>
+  </div>
+
 </div>
+
+

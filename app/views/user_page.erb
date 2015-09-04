@@ -1,0 +1,32 @@
+<div class="container">
+
+  <form id="log_out" action='/log_out' method="post">
+    <input type="submit" value="Log Out">
+  </form>
+  <p>Welcome, <%= @user.name %>!</p>
+
+  <h1>PseudoFlickr on Sinatra</h1>
+
+  <button id="new_album" class="btn btn-default">Create New Album</button>
+  <form id="new_album" action='/new_album' method="post">
+    <input type="text" name="title" placeholder="Album Title">
+    <input type="text" name="description" placeholder="Description">
+    <input type="submit" value="Create New Album">
+  </form>
+
+  <% @albums.each do |album| %>
+  <div id="albums">
+    <dd><a href="/users/<%= @user.id %>/albums/<%= album.id %>"><%= album.title %></a></dd>
+    <dt><%= album.description %></dt>
+    <img src="<% album.photos.first %>">
+  </div>
+  <% end %>
+
+</div>
+
+  <form action='/upload' method="post" enctype="multipart/form-data">
+    <input type="text" name="image_name" placeholder="Image Name">
+    <input type="text" name="description" placeholder="Description">
+    <input type="file" name="image">
+    <input type="submit" value="Upload!">
+  </form>

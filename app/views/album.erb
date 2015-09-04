@@ -1,0 +1,31 @@
+<div class="container">
+
+  <p>Welcome, <%= @user.name %>!</p>
+  <form id="log_out" action='/log_out' method="post">
+    <input type="submit" value="Log Out">
+  </form>
+
+  <h1>PseudoFlickr on Sinatra</h1>
+
+  <h3><%= @album.title %></h3>
+  <dt><%= @album.description %></dt>
+
+  <form action="/upload/<%= @album.id %>" method="post" enctype="multipart/form-data">
+    <fieldset>
+      <legend>Upload new photo</legend>
+      <input type="text" name="image_name" placeholder="Image Name">
+      <input type="text" name="description" placeholder="Description">
+      <input type="file" name="image">
+      <input type="submit" value="Upload">
+    </fieldset>
+  </form>
+
+
+  <div id="display_photos">
+    <% @all_photos.each do |photo| %>
+    <img src="<%= photo.image_url(:thumb) if photo.image? %>">
+    <% end %>
+  </div>
+
+</div>
+
